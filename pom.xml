@@ -52,10 +52,10 @@
     <scm>
         <url>http://github.com/paradoxical-io/rabbitmq</url>
         <connection>
-            scm:git@github.com:paradoxical-io/rabbitmq.git
+            scm:git:git@github.com:paradoxical-io/rabbitmq.git
         </connection>
         <developerConnection>
-            scm:git@github.com:paradoxical-io/rabbitmq.git
+            scm:git:git@github.com:paradoxical-io/rabbitmq.git
         </developerConnection>
         <tag>HEAD</tag>
     </scm>
