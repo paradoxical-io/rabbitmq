@@ -13,6 +13,14 @@
     <description>A simplified RMQ client library</description>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
 
     <name>rabbitmq</name>
     <url>http://maven.apache.org</url>
