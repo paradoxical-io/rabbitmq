@@ -1,6 +1,6 @@
-domains.rabbitmq
+rabbitmq
 ========================
-[![Build Status](http://dom-jenkins.cloud.dev.phx3.gdg/job/Domains.RabbitMq/badge/icon)](http://dom-jenkins.cloud.dev.phx3.gdg/job/Domains.RabbitMq/)
+[![Build Status](https://travis-ci.org/paradoxical-io/francois.svg?branch=master)](https://travis-ci.org/paradoxical-io/rabbitmq)
 
 This is an RMQ wrapper library that provides simpler RMQ access.
 
@@ -38,6 +38,7 @@ The library supports
 - Ack 
 - Nack (kill message)
 - Reqeue (Nack with reschedule if not already delivered up to max times)
+- Defer (Nack with reschedule ignoring max times
 - RetryLater (Will attempt to re-publish the message to a delayed retry exchange)
 
 Also included is nicer publisher support:
