@@ -4,6 +4,16 @@ rabbitmq
 
 This is an RMQ wrapper library that provides simpler RMQ access.
 
+#Installation
+
+```
+<dependency>
+    <groupId>io.paradoxical</groupId>
+    <artifactId>rabbitmq</artifactId>
+    <version>1.0</version>
+</dependency>
+```
+
 For example
 
 ```
