@@ -60,6 +60,17 @@
         <tag>HEAD</tag>
     </scm>
 
+    <repositories>
+        <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>central</id>
+            <name>bintray</name>
+            <url>http://jcenter.bintray.com</url>
+        </repository>
+    </repositories>
+
     <developers>
         <developer>
             <id>devshorts</id>
