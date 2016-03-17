@@ -50,3 +50,4 @@ val publisher = new PublisherProviderImpl<>(getTestChannelProvider()).forExchang
 publisher.publish(fixture.manufacturePojo(Data.class));
 ```
 
+ 
