@@ -27,6 +27,7 @@ import com.spotify.docker.client.messages.PortBinding;
 import lombok.Cleanup;
 import lombok.Value;
 import org.apache.commons.lang3.StringUtils;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
@@ -49,6 +50,7 @@ import static com.spotify.docker.client.DockerClient.LogsParam.stdout;
 import static org.junit.Assert.assertEquals;
 
 @Category(SlowTests.class)
+@Ignore
 public class RecoveryTests extends TestBase {
     public static final String DOCKER_MACHINE_SERVICE_URL = "https://192.168.99.100:2376";
 

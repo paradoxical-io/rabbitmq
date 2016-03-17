@@ -10,9 +10,9 @@ public class TestQueueNameBuilder {
 
     @Test
     public void test_queue_name_builder() throws QueueNameException {
-        String queueName = QueueNameBuilder.buildQueueName("inames  GoDaddy", 1, "Connector-Event");
+        String queueName = QueueNameBuilder.buildQueueName("worker  paradoxical", 1, "plugin-Event");
 
-        assertEquals("consumer.inames-godaddy.v1.connector-event", queueName);
+        assertEquals("consumer.worker-paradoxical.v1.plugin-event", queueName);
     }
 
     @Test
@@ -31,27 +31,27 @@ public class TestQueueNameBuilder {
 
     @Test
     public void test_queue_name_builder_with_semantic() throws QueueNameException {
-        String queueName = QueueNameBuilder.buildQueueName("inames-godaddy", "semantic", 1, "connector-event");
+        String queueName = QueueNameBuilder.buildQueueName("worker-paradoxical", "semantic", 1, "plugin-event");
 
-        assertEquals("consumer.inames-godaddy-semantic.v1.connector-event", queueName);
+        assertEquals("consumer.worker-paradoxical-semantic.v1.plugin-event", queueName);
     }
 
     @Test
     public void test_queue_name_builder_with_class() throws QueueNameException {
-        String queueName = QueueNameBuilder.buildQueueName("inames-godaddy", 1, TestQueueNameBuilder.class);
+        String queueName = QueueNameBuilder.buildQueueName("worker-paradoxical", 1, TestQueueNameBuilder.class);
 
-        assertEquals("consumer.inames-godaddy.v1.test-queue-name-builder", queueName);
+        assertEquals("consumer.worker-paradoxical.v1.test-queue-name-builder", queueName);
     }
 
     @Test
     public void test_queue_name_builder_with_class_and_semantic() throws QueueNameException {
-        String queueName = QueueNameBuilder.buildQueueName("inames-godaddy", "semantic", 1, TestQueueNameBuilder.class);
+        String queueName = QueueNameBuilder.buildQueueName("worker-paradoxical", "semantic", 1, TestQueueNameBuilder.class);
 
-        assertEquals("consumer.inames-godaddy-semantic.v1.test-queue-name-builder", queueName);
+        assertEquals("consumer.worker-paradoxical-semantic.v1.test-queue-name-builder", queueName);
     }
 
     @Test(expected = QueueNameException.class)
     public void test_queue_name_no_version() throws QueueNameException {
-        QueueNameBuilder.buildQueueName("inames-godaddy", -1, "connector-event");
+        QueueNameBuilder.buildQueueName("worker-paradoxical", -1, "plugin-event");
     }
 }

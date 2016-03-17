@@ -5,9 +5,9 @@ import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ChannelConfigTests extends TestBase {
+public class ChannelConfigTests {
     @Test
-    public void test_defaults(){
+    public void test_defaults() {
         final ChannelOptions build = ChannelOptions.builder().build();
 
         assertThat(build).isEqualTo(ChannelOptions.Default);
