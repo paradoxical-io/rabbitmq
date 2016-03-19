@@ -1,6 +1,6 @@
 rabbitmq
 ========================
-[![Build Status](https://travis-ci.org/paradoxical-io/francois.svg?branch=master)](https://travis-ci.org/paradoxical-io/rabbitmq)
+[![Build Status](https://travis-ci.org/paradoxical-io/rabbitmq.svg?branch=master)](https://travis-ci.org/paradoxical-io/rabbitmq)
 
 This is an RMQ wrapper library that provides simpler RMQ access.
 
