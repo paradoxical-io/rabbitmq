@@ -26,7 +26,7 @@ import static java.util.stream.Collectors.toList;
  * Dynamically adds event types to the MetricRegistry as they come in, as well as handles
  * creating metric sets on the fly using the metric group list.
  * <p/>
- * For example, giving a metric group of ["foo", "foo.bar", "biz"] and an incomign event type of `Data`
+ * For example, giving a metric group of ["foo", "foo.bar", "biz"] and an incoming event type of `Data`
  * will generate event metrics of:
  * <p/>
  * className.events <- firehose

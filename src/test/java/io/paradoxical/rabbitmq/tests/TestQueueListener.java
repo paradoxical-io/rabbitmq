@@ -411,77 +411,77 @@ public class TestQueueListener extends TestBase {
                                                3,
                                                10);
 
-        assertThat(metricsText).contains("io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.inflight\n" +
-                                         "             count = 0\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.inflight.Data\n" +
-                                         "             count = 0\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.inflight.Subclass\n" +
-                                         "             count = 0\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registrar.inflight\n" +
-                                         "             count = 0\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registrar.inflight.Data\n" +
-                                         "             count = 0\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registrar.inflight.Subclass\n" +
-                                         "             count = 0\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registrar.reject\n" +
-                                         "             count = 10\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registrar.reject.Data\n" +
-                                         "             count = 5\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registrar.reject.Subclass\n" +
-                                         "             count = 5\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registrar.retries\n" +
-                                         "             count = 10\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registrar.retries.Data\n" +
-                                         "             count = 5\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registrar.retries.Subclass\n" +
-                                         "             count = 5\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registry.inflight\n" +
-                                         "             count = 0\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registry.inflight.Data\n" +
-                                         "             count = 0\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registry.inflight.Subclass\n" +
-                                         "             count = 0\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registry.registrar.inflight\n" +
-                                         "             count = 0\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registry.registrar.inflight.Data\n" +
-                                         "             count = 0\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registry.registrar.inflight.Subclass\n" +
-                                         "             count = 0\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registry.registrar.reject\n" +
-                                         "             count = 10\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registry.registrar.reject.Data\n" +
-                                         "             count = 5\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registry.registrar.reject.Subclass\n" +
-                                         "             count = 5\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registry.registrar.retries\n" +
-                                         "             count = 10\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registry.registrar.retries.Data\n" +
-                                         "             count = 5\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registry.registrar.retries.Subclass\n" +
-                                         "             count = 5\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registry.reject\n" +
-                                         "             count = 10\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registry.reject.Data\n" +
-                                         "             count = 5\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registry.reject.Subclass\n" +
-                                         "             count = 5\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registry.retries\n" +
-                                         "             count = 10\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registry.retries.Data\n" +
-                                         "             count = 5\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registry.retries.Subclass\n" +
-                                         "             count = 5\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.reject\n" +
-                                         "             count = 10\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.reject.Data\n" +
-                                         "             count = 5\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.reject.Subclass\n" +
-                                         "             count = 5\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.retries\n" +
-                                         "             count = 10\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.retries.Data\n" +
-                                         "             count = 5\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.retries.Subclass\n" +
+        assertThat(metricsText).contains("io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.inflight" + System.lineSeparator() +
+                                         "             count = 0" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.inflight.Data" + System.lineSeparator() +
+                                         "             count = 0" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.inflight.Subclass" + System.lineSeparator() +
+                                         "             count = 0" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registrar.inflight" + System.lineSeparator() +
+                                         "             count = 0" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registrar.inflight.Data" + System.lineSeparator() +
+                                         "             count = 0" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registrar.inflight.Subclass" + System.lineSeparator() +
+                                         "             count = 0" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registrar.reject" + System.lineSeparator() +
+                                         "             count = 10" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registrar.reject.Data" + System.lineSeparator() +
+                                         "             count = 5" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registrar.reject.Subclass" + System.lineSeparator() +
+                                         "             count = 5" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registrar.retries" + System.lineSeparator() +
+                                         "             count = 10" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registrar.retries.Data" + System.lineSeparator() +
+                                         "             count = 5" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registrar.retries.Subclass" + System.lineSeparator() +
+                                         "             count = 5" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registry.inflight" + System.lineSeparator() +
+                                         "             count = 0" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registry.inflight.Data" + System.lineSeparator() +
+                                         "             count = 0" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registry.inflight.Subclass" + System.lineSeparator() +
+                                         "             count = 0" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registry.registrar.inflight" + System.lineSeparator() +
+                                         "             count = 0" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registry.registrar.inflight.Data" + System.lineSeparator() +
+                                         "             count = 0" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registry.registrar.inflight.Subclass" + System.lineSeparator() +
+                                         "             count = 0" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registry.registrar.reject" + System.lineSeparator() +
+                                         "             count = 10" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registry.registrar.reject.Data" + System.lineSeparator() +
+                                         "             count = 5" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registry.registrar.reject.Subclass" + System.lineSeparator() +
+                                         "             count = 5" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registry.registrar.retries" + System.lineSeparator() +
+                                         "             count = 10" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registry.registrar.retries.Data" + System.lineSeparator() +
+                                         "             count = 5" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registry.registrar.retries.Subclass" + System.lineSeparator() +
+                                         "             count = 5" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registry.reject" + System.lineSeparator() +
+                                         "             count = 10" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registry.reject.Data" + System.lineSeparator() +
+                                         "             count = 5" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registry.reject.Subclass" + System.lineSeparator() +
+                                         "             count = 5" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registry.retries" + System.lineSeparator() +
+                                         "             count = 10" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registry.retries.Data" + System.lineSeparator() +
+                                         "             count = 5" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.registry.retries.Subclass" + System.lineSeparator() +
+                                         "             count = 5" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.reject" + System.lineSeparator() +
+                                         "             count = 10" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.reject.Data" + System.lineSeparator() +
+                                         "             count = 5" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.reject.Subclass" + System.lineSeparator() +
+                                         "             count = 5" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.retries" + System.lineSeparator() +
+                                         "             count = 10" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.retries.Data" + System.lineSeparator() +
+                                         "             count = 5" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureByRuntimeException.retries.Subclass" + System.lineSeparator() +
                                          "             count = 5");
 
         assertThat(metricsText).contains(Data.class.getSimpleName());
@@ -502,55 +502,55 @@ public class TestQueueListener extends TestBase {
                                                3,
                                                10);
 
-        assertThat(metricsText).doesNotContain("io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registry.retries\n");
+        assertThat(metricsText).doesNotContain("io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registry.retries" + System.lineSeparator());
 
-        assertThat(metricsText).contains("io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.inflight\n" +
-                                         "             count = 0\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.inflight.Data\n" +
-                                         "             count = 0\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.inflight.Subclass\n" +
-                                         "             count = 0\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registrar.inflight\n" +
-                                         "             count = 0\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registrar.inflight.Data\n" +
-                                         "             count = 0\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registrar.inflight.Subclass\n" +
-                                         "             count = 0\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registrar.reject\n" +
-                                         "             count = 10\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registrar.reject.Data\n" +
-                                         "             count = 5\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registrar.reject.Subclass\n" +
-                                         "             count = 5\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registry.inflight\n" +
-                                         "             count = 0\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registry.inflight.Data\n" +
-                                         "             count = 0\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registry.inflight.Subclass\n" +
-                                         "             count = 0\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registry.registrar.inflight\n" +
-                                         "             count = 0\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registry.registrar.inflight.Data\n" +
-                                         "             count = 0\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registry.registrar.inflight.Subclass\n" +
-                                         "             count = 0\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registry.registrar.reject\n" +
-                                         "             count = 10\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registry.registrar.reject.Data\n" +
-                                         "             count = 5\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registry.registrar.reject.Subclass\n" +
-                                         "             count = 5\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registry.reject\n" +
-                                         "             count = 10\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registry.reject.Data\n" +
-                                         "             count = 5\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registry.reject.Subclass\n" +
-                                         "             count = 5\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.reject\n" +
-                                         "             count = 10\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.reject.Data\n" +
-                                         "             count = 5\n" +
-                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.reject.Subclass\n" +
+        assertThat(metricsText).contains("io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.inflight" + System.lineSeparator() +
+                                         "             count = 0" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.inflight.Data" + System.lineSeparator() +
+                                         "             count = 0" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.inflight.Subclass" + System.lineSeparator() +
+                                         "             count = 0" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registrar.inflight" + System.lineSeparator() +
+                                         "             count = 0" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registrar.inflight.Data" + System.lineSeparator() +
+                                         "             count = 0" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registrar.inflight.Subclass" + System.lineSeparator() +
+                                         "             count = 0" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registrar.reject" + System.lineSeparator() +
+                                         "             count = 10" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registrar.reject.Data" + System.lineSeparator() +
+                                         "             count = 5" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registrar.reject.Subclass" + System.lineSeparator() +
+                                         "             count = 5" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registry.inflight" + System.lineSeparator() +
+                                         "             count = 0" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registry.inflight.Data" + System.lineSeparator() +
+                                         "             count = 0" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registry.inflight.Subclass" + System.lineSeparator() +
+                                         "             count = 0" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registry.registrar.inflight" + System.lineSeparator() +
+                                         "             count = 0" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registry.registrar.inflight.Data" + System.lineSeparator() +
+                                         "             count = 0" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registry.registrar.inflight.Subclass" + System.lineSeparator() +
+                                         "             count = 0" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registry.registrar.reject" + System.lineSeparator() +
+                                         "             count = 10" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registry.registrar.reject.Data" + System.lineSeparator() +
+                                         "             count = 5" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registry.registrar.reject.Subclass" + System.lineSeparator() +
+                                         "             count = 5" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registry.reject" + System.lineSeparator() +
+                                         "             count = 10" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registry.reject.Data" + System.lineSeparator() +
+                                         "             count = 5" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.registry.reject.Subclass" + System.lineSeparator() +
+                                         "             count = 5" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.reject" + System.lineSeparator() +
+                                         "             count = 10" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.reject.Data" + System.lineSeparator() +
+                                         "             count = 5" + System.lineSeparator() +
+                                         "io.paradoxical.rabbitmq.tests.data.DataListenerFailureNack.reject.Subclass" + System.lineSeparator() +
                                          "             count = 5");
 
         assertThat(metricsText).contains(Data.class.getSimpleName());
@@ -572,12 +572,13 @@ public class TestQueueListener extends TestBase {
                                                3,
                                                10);
 
-        assertThat(metricsText).contains("io.paradoxical.rabbitmq.tests.data.DataListener.registry.events\n");
-        assertThat(metricsText).contains("io.paradoxical.rabbitmq.tests.data.DataListener.registrar.events\n");
-        assertThat(metricsText).contains("io.paradoxical.rabbitmq.tests.data.DataListener.registry.registrar.events\n");
-        assertThat(metricsText).contains("io.paradoxical.rabbitmq.tests.data.DataListener.registry.registrar.events\n");
-        assertThat(metricsText).contains("io.paradoxical.rabbitmq.tests.data.DataListener.registry.registrar.events.Subclass\n");
-        assertThat(metricsText).contains("io.paradoxical.rabbitmq.tests.data.DataListener.registry.registrar.events.Data\n");
+        
+        assertThat(metricsText).contains("io.paradoxical.rabbitmq.tests.data.DataListener.registry.events" + System.lineSeparator());
+        assertThat(metricsText).contains("io.paradoxical.rabbitmq.tests.data.DataListener.registrar.events" + System.lineSeparator());
+        assertThat(metricsText).contains("io.paradoxical.rabbitmq.tests.data.DataListener.registry.registrar.events" + System.lineSeparator());
+        assertThat(metricsText).contains("io.paradoxical.rabbitmq.tests.data.DataListener.registry.registrar.events" + System.lineSeparator());
+        assertThat(metricsText).contains("io.paradoxical.rabbitmq.tests.data.DataListener.registry.registrar.events.Subclass" + System.lineSeparator());
+        assertThat(metricsText).contains("io.paradoxical.rabbitmq.tests.data.DataListener.registry.registrar.events.Data" + System.lineSeparator());
         assertThat(metricsText).contains(Data.class.getSimpleName());
         assertThat(metricsText).contains(Subclass.class.getSimpleName());
     }
