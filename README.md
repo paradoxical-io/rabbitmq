@@ -27,6 +27,7 @@ top of that, we wanted
 - Hassle free channel configurations
 - Retry semantics 
 - Easy DLQ setup
+- Automatic request tracing
 - Metrics
 - Fault tolerant connections out of the box
 
