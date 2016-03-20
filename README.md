@@ -22,6 +22,9 @@ top of that, we wanted
 
 - Typed listeners
 - Typed publishers
+- Typed configuration
+- Hassle free exchange/queue declarations
+- Hassle free channel configurations
 - Retry semantics 
 - Easy DLQ setup
 - Metrics
