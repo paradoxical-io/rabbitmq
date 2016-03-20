@@ -248,5 +248,19 @@ options are exposed as part of the `ChannelOptions` class which is used to insta
 Listeners can define their serializer via the `ListenerOptions` listener argument, and publishers can provide
 their serializer during instantiation.  This lets you create custom serialization semantics. By default, messages
 are serialized as JSON.
-                                           
+
+## Request tracing
+
+Request tracing in a distributed environment is a non trivial task. All events that flow through this library
+need to subclass `EventBase` which allows the framework to publish a `correlationId` (a UUID) from publish to consumption.
+
+The publisher can provide a correlation id supplier `Supplier<UUID>` in order to keep track of events. If none is provided 
+one is randomly generated.
+
+When an event listener gets the message, the sl4jf Mapped Diagnostic Context (MDC) field of `correlationId` gets set
+automatically.  You can change which field this goes into by setting:
+
+```
+FilterAttributes.CORR_ID = "...";
+```
 
