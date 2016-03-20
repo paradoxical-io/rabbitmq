@@ -2,7 +2,7 @@ rabbitmq
 ========================
 [![Build Status](https://travis-ci.org/paradoxical-io/rabbitmq.svg?branch=master)](https://travis-ci.org/paradoxical-io/rabbitmq)
 
-This is an RMQ wrapper library that provides simpler RMQ access.
+This is an RMQ wrapper library that provides simpler RMQ access. 
 
 #Installation
 
@@ -14,7 +14,16 @@ This is an RMQ wrapper library that provides simpler RMQ access.
 </dependency>
 ```
 
-For example
+# Why another java RMQ library?
+
+The java library provided by RMQ is full featured, but isn't well typed and requires you to intermix your event handling code
+with a lot of channel/exchange/etc declaration.  We wanted a simple invokeable method that just _gives you events_
+
+## Listeners
+
+For example, below we have a queue listener that is typed, so events that this listener sits on should be of type `Data`.
+
+We can enforce publishing events of this type with a strong typed publisher, and it will handle all the serialization for us.
 
 ```
 public class DataListener extends QueueListenerSync<Data> {
@@ -24,13 +33,7 @@ public class DataListener extends QueueListenerSync<Data> {
     public DataListener(
         final ChannelProvider channelProvider, 
         final QueueConfiguration info, 
-        ListenerOptions options) 
-        throws
-          IOException,
-          InterruptedException,
-          NoSuchAlgorithmException,
-          KeyManagementException,
-          URISyntaxException {
+        ListenerOptions options) {
         super(channelProvider, info, Data.class, options);
     }
 
@@ -43,6 +46,96 @@ public class DataListener extends QueueListenerSync<Data> {
 }
 ```
 
+Listeners are created with an instance of a `QueueConfiguration` class which tells the listener on what to listen to
+given the 
+
+- Exchange
+- Queues
+    - Which routes on which queue
+  
+For example:
+
+```
+Queue queue = Queue.valueOf("foo").withRoutes("v1.#.event", "v1.#.event2");
+
+final Exchange exchange = new Exchange(Exchange.Type.Topic, "exchange");
+
+DataListener listener = new DataListener(getTestChannelProvider(), new QueueConfiguration(exchange, queue));
+```
+
+Queues and exchanges also expose options to set
+
+- Autodelete
+- Exclusive
+- Durability
+
+Via strongly typed values.
+
+We can also wire in DLQ semantics:
+
+```
+Exchange dlqExchange = Exchange.asDlq(getUnique("test.dlq"));
+
+dlqExchange.setDeclareQueueWithSameName(true);
+
+Exchange exchange = new Exchange(queue).withDlq(dlqExchange);
+```
+
+A DLQ exchange can auto delcare a queue with the same name as the DLQ name, which ensures that DLQ events don't go 
+into the RMQ ether if there is nobody listening on it.
+
+## Retry exchanges
+
+RMQ supports message TTL's and as such you can create a retry queue. This can be nice if you want to retry messages a
+few hours later.  To do that, create a retry exchange:
+
+```
+RetryStrategy retryStrategy = (attempts, item) -> Optional.of(Duration.ofSeconds(attempts * 2))
+
+Exchange exchange = new Exchange(Exchange.Type.Topic, "exponential_retry_exchange").withRetryExchange(retrStrategy);
+```
+
+The retry exchange strategy lets you define how many times you want to republish and what is the duration to wait between events.
+
+## Publishing
+
+Also included is nicer publisher support.
+
+
+### Topics
+
+Below is an example with a topic exchange.
+
+```
+ChannelProvider provider = new SimpleChannelProvider(new Host(URI.create("amqp://...")));
+
+Exchange exchange = new Exchange(Exchange.Type.Topic, "foo-exchange");
+
+val publisher = new PublisherProviderImpl<>(provider).forExchange(exchange)
+                                                     .onRoute("foo");
+
+publisher.publish(new Data());
+```
+
+We can now control and ensure that we are publishing the correct serializable events to the right publisher, so there 
+is no accidental publishing the wrong message to the wrong exchange (which can cause dead messages/poison messages if not careful)
+
+### Direct
+
+We can also publish to a direct exchange 
+
+```
+ChannelProvider provider = new SimpleChannelProvider(new Host(URI.create("amqp://...")));
+
+Exchange exchange = new Exchange(Exchange.Type.Topic, "foo-exchange");
+
+val publisher = new PublisherProviderImpl<>(provider).forQueue(exchange);
+
+publisher.publish(new Data());
+```
+
+### Publishing semantics
+
 The library supports 
 
 - Ack 
@@ -51,13 +144,9 @@ The library supports
 - Defer (Nack with reschedule ignoring max times
 - RetryLater (Will attempt to re-publish the message to a delayed retry exchange)
 
-Also included is nicer publisher support:
 
-```
-val publisher = new PublisherProviderImpl<>(getTestChannelProvider()).forExchange(exchange)
-                                                                     .onRoute("foo");
+## Retries
 
-publisher.publish(fixture.manufacturePojo(Data.class));
-```
+Reconnecting and retries are handled automatically by the `lyra` library, and is bundled automatically. Several 
+options are exposed as part of the `ChannelOptions` class which is used to instantiate a channel provider:
 
- 
