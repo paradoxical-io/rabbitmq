@@ -102,7 +102,69 @@ if(promise.getMessage().isPresent()){
     promise.complete(MessageResult.Ack);
 }                                              
 ```
-                                           
+
+### Listener metrics
+
+Tying in io.dropwizard.metrics, listeners can log statistics such as in flight messages, and message process timing information 
+granular by polymorphic event type.  For example, you can view information about an event heirarchy of:
+
+```
+class Data
+
+class Child extends Data
+
+class Child2 extends Data
+```
+
+Such that you can view 
+
+- All event timing information
+- Event timing for only `Child`
+- Event timing for only `Child2`
+
+You can also add what we call `metric groups`, which allow you to generate cross sectional denormalized metrics for easier
+graphite reporting.
+
+For example, lets say you have a listener who is configured to listen on credit card payment processing for a particular entity, 
+like Bank Of America. There may be several kinds of listeners for payment processors running: Credit Card, Check, Bitcoin, whatever,
+and all of those are by banking institutions: Bank Of America, USAA, etc.
+
+You may want to be able to ask the question _how many total payment events are being processed_? And you may want to ask 
+_how many credit cards are being processed by Bank Of America`? _How many events has USAA processed_?
+
+This is totally doable but requires you to emit all these events yourself. Instead by passing in a metric group and a 
+metric registry to the listener, the event base class can handle all this for you:
+
+```
+final List<String> metricGroups = Arrays.asList("bank", "creditcard", "bank.creditcard", "creditcard.bank");
+
+final Exchange exchange = new Exchange("payment-exchange");
+
+MetricRegistry registry = new MetricRegistry();
+
+ListenerOptions listenerOptions = ListenerOptions.builder()
+                                                 .metricRegistry(registry)
+                                                 .metricGroups(metricGroups)
+                                                 .build();
+                                                 
+DataListener<PaymentEvent> listener = 
+        new DataListener<>(channelProvider, 
+                           new QueueConfiguration(exchange, Queue.valueOf("USAA"),
+                           listenerOptions);
+
+listener.start();
+```
+
+You'll now get events that are prefixed with 
+
+```
+bank
+creditcard
+bank.creditcard
+creditcard.bank
+```
+
+Which can be analyzed in graphite
 
 ## Retry exchanges
 
@@ -169,4 +231,11 @@ The library supports
 
 Reconnecting and retries are handled automatically by the `lyra` library, and is bundled automatically. Several 
 options are exposed as part of the `ChannelOptions` class which is used to instantiate a channel provider:
+
+## Custom serializer
+
+Listeners can define their serializer via the `ListenerOptions` listener argument, and publishers can provide
+their serializer during instantiation.  This lets you create custom serialization semantics. By default, messages
+are serialized as JSON.
+                                           
 
