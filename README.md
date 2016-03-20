@@ -17,7 +17,15 @@ This is an RMQ wrapper library that provides simpler RMQ access.
 # Why another java RMQ library?
 
 The java library provided by RMQ is full featured, but isn't well typed and requires you to intermix your event handling code
-with a lot of channel/exchange/etc declaration.  We wanted a simple invokeable method that just _gives you events_
+with a lot of channel/exchange/etc declaration.  We wanted a simple invokeable method that just _gives you events_. On 
+top of that, we wanted
+
+- Typed listeners
+- Typed publishers
+- Retry semantics 
+- Easy DLQ setup
+- Metrics
+- Fault tolerant connections out of the box
 
 ## Listeners
 
