@@ -84,6 +84,26 @@ Exchange exchange = new Exchange(queue).withDlq(dlqExchange);
 A DLQ exchange can auto delcare a queue with the same name as the DLQ name, which ensures that DLQ events don't go 
 into the RMQ ether if there is nobody listening on it.
 
+### Promise based consumers
+
+Instead of having a synchronous worker listener, we can also create a promise based consumer.  This can be useful if you 
+want to `pull` messages from RMQ instead of be `pushed` messages.
+
+```
+PromiseQueueConsumer<Data> promiseConsumer =
+                new PromiseQueueConsumer<>(getTestChannelProvider(),
+                                           new SingleQueueConfiguration(exchange, queue),
+                                           Data.class);
+
+// wait at most 10 milliseconds for a message                                           
+MessagePromise<Data> promise = promiseConsumer.getNextMessage(Duration.ofMillis(20));
+                                           
+if(promise.getMessage().isPresent()){
+    promise.complete(MessageResult.Ack);
+}                                              
+```
+                                           
+
 ## Retry exchanges
 
 RMQ supports message TTL's and as such you can create a retry queue. This can be nice if you want to retry messages a
