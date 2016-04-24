@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -10,7 +11,7 @@
     <groupId>io.paradoxical</groupId>
     <artifactId>rabbitmq</artifactId>
     <description>A simplified RMQ client library</description>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.1${revision}</version>
     <packaging>jar</packaging>
     <licenses>
         <license>
@@ -25,6 +26,7 @@
     <url>http://maven.apache.org</url>
 
     <properties>
+        <revision>-SNAPSHOT</revision>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.plugin.version>3.0</maven.compiler.plugin.version>
         <java.version>1.8</java.version>
@@ -262,14 +264,6 @@
             <plugins>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-javadoc-plugin</artifactId>
-                    <configuration>
-                        <failOnError>false</failOnError>
-                        <additionalparam>-Xdoclint:none</additionalparam>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>${maven.compiler.plugin.version}</version>
                     <configuration>
@@ -378,19 +372,6 @@
                 <artifactId>buildnumber-maven-plugin</artifactId>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>${maven.source.plugin.version}</version>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar-no-fork</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
                 <version>1.6.3</version>
@@ -405,9 +386,38 @@
     </build>
     <profiles>
         <profile>
-            <id>sign</id>
+            <id>release</id>
             <build>
                 <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>2.9.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <failOnError>false</failOnError>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>${maven.source.plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
@@ -422,14 +432,15 @@
                             </execution>
                         </executions>
                         <configuration>
-                            <useAgent>true</useAgent>
-                            <keyname>${env.GPG_USER}</keyname>
+                            <defaultKeyring>false</defaultKeyring>
+                            <keyname>476C78DF</keyname>
+                            <passphrase>${env.GPG_PASSWORD}</passphrase>
+                            <publicKeyring>${project.basedir}/.deployment/gpg/paradoxical-io.pubgpg</publicKeyring>
+                            <secretKeyring>${project.basedir}/.deployment/gpg/paradoxical-io-private.gpg</secretKeyring>
                         </configuration>
                     </plugin>
                 </plugins>
             </build>
         </profile>
     </profiles>
-
-
 </project>
