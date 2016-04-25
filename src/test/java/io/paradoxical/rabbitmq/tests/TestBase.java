@@ -1,7 +1,11 @@
 package io.paradoxical.rabbitmq.tests;
 
-import com.github.geowarin.junit.DockerRule;
 import com.godaddy.logging.LoggerFactory;
+import com.spotify.docker.client.DockerCertificateException;
+import com.spotify.docker.client.DockerException;
+import io.paradoxical.Container;
+import io.paradoxical.DockerClientConfig;
+import io.paradoxical.DockerCreator;
 import io.paradoxical.rabbitmq.Exchange;
 import io.paradoxical.rabbitmq.Queue;
 import io.paradoxical.rabbitmq.QueueConfiguration;
@@ -13,7 +17,9 @@ import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PatternLayout;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.ClassRule;
 import org.junit.Rule;
 import org.junit.rules.TestName;
@@ -39,20 +45,34 @@ public class TestBase {
         System.out.println(name.getMethodName());
     }
 
-    @ClassRule
-    public static DockerRule rabbitRule =
-            DockerRule.builder()
-                      .image("rabbitmq:management")
-                      .ports("5672")
-                      .waitForLog("Server startup complete")
-                      .build();
+    private static Container rabbitContainer;
+
+    @BeforeClass
+    public static void setup() throws InterruptedException, DockerException, DockerCertificateException {
+        DockerClientConfig config =
+                DockerClientConfig.builder()
+                                  .imageName("rabbitmq:management")
+                                  .port(5672)
+                                  .waitForLogLine("Server startup complete")
+                                  .build();
+
+        rabbitContainer = DockerCreator.build(config);
+    }
+
+    @AfterClass
+    public static void teardown(){
+        if(rabbitContainer != null){
+            rabbitContainer.close();
+        }
+    }
+
 
     static {
         Logger rootLogger = Logger.getRootLogger();
 
         final String environmentLogLevel = System.getenv("LOG_LEVEL");
 
-        rootLogger.setLevel(environmentLogLevel != null ? Level.toLevel(environmentLogLevel) : Level.OFF);
+        rootLogger.setLevel(environmentLogLevel != null ? Level.toLevel(environmentLogLevel) : Level.INFO);
 
         PatternLayout layout = new PatternLayout("%d{ISO8601} [%t] %-5p %c %x - %m%n");
 
@@ -60,7 +80,8 @@ public class TestBase {
     }
 
     protected Host getTestHost() {
-        return new Host(URI.create(String.format("amqp://%s:%s", rabbitRule.getDockerHost(), rabbitRule.getHostPort("5672/tcp"))));
+        return new Host(URI.create(String.format("amqp://%s:%s",
+                                                 rabbitContainer.getDockerHost(), rabbitContainer.getTargetPortToHostPortLookup().get(5672))));
     }
 
     protected void cleanup(Exchange exchange) {
